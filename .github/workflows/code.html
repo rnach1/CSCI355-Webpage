@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="navbar">
+  <a href="#home">Home</a>
+  <div class="subnav">
+    <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+        <div class="subnav-content">
+        <h2><center>Contact Us<br>Send an email to roi.nachshon33@qmail.cuny.edu:</center></h2>
+            <form action="mailto:roi.nachshon33@qmail.cuny.edu" method="post" enctype="text/plain">
+            Name:<br>
+            <input type="text" name="name"><br>
+            E-mail:<br>
+            <input type="text" name="mail"><br>
+            Comment:<br>
+            <input type="text" name="comment" size="50"><br><br>
+            <input type="submit" value="Send">
+            <input type="reset" value="Reset">
+            </form>
+      <a href="https://docs.google.com/document/d/1MN_OyLYhia1-4gTi2LD45pYgP0O5WT1TaE9hKpU1uvY/edit?usp=sharing">Meet the Developer</a>
+    </div>
+  </div>
+</div>
+<div class="subnav">
+    <button class="subnavbtn">Browser <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+          <a href="#width" onclick="showInfo('width')">Screen Width</a>
+          <a href="#height" onclick="showInfo('height')">Screen Height</a>
+          <a href="#availWidth" onclick="showInfo('availWidth')">Screen Avail Width</a>
+          <a href="#availHeight" onclick="showInfo('availHeight')">Screen Avail Height</a>
+          <a href="#colorDepth" onclick="showInfo('colorDepth')">Screen Color Depth</a>
+          <a href="#pixelDepth" onclick="showInfo('pixelDepth')">Screen Pixel Depth</a>
+          <a href="#innerHeight" onclick="showInfo('innerHeight')">Window Inner Height</a>
+          <a href="#innerWidth" onclick="showInfo('innerWidth')">Window Inner Width</a>
+          <a href="#appName" onclick="showInfo('appName')">Navigator App Name</a>
+          <a href="#product" onclick="showInfo('product')">Navigator Product</a>
+          <a href="#appVersion" onclick="showInfo('appVersion')">Navigator App Version</a>
+          <a href="#userAgent" onclick="showInfo('userAgent')">Navigator User Agent</a>
+          <a href="#platform" onclick="showInfo('platform')">Navigator Platform</a>
+          <a href="#language" onclick="showInfo('language')">Navigator Language</a>
+          <a href="#href" onclick="showInfo('href')">Location href</a>
+          <a href="#hostname" onclick="showInfo('hostname')">Location Host Name</a>
+          <a href="#pathname" onclick="showInfo('pathname')">Location Path Name</a>
+          <a href="#protocol" onclick="showInfo('protocol')">Location Protocol</a>
+          <a href="#latitude" onclick="getLocation()">Geolocation Longitude and Latitude</a>
+        </div>
+      </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Course <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="https://www.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149">Link to textbook</a>
+      <a href="http://w3schools.com">Link to W3Schools</a>
+      <a href="https://www.geeksforgeeks.org/web-development/">Link to Geeks for Geeks</a>
+    </div>
+  </div>
+</div>
+
+<div style="padding:0 16px">
+  <h3>Website CSCI 355 - Roi Nachshon</h3>
+  <p>This website is meant to show my understanding of CSCI 355 topics relating to HTML, CSS, and Webpaging. </p>
+  <p>On my website you will find a Browser page listing the navigator, window, screen, location, and geolocations of the browser itself. You will also find A course page with links to our textbook, w3schools, and GeeksforGeeks, and an About section which will tell you more about me as the developer of this website and a section to contact me if needed.</p>
+</div>
+
+<div id="infoDisplay" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+  <!-- Information will be displayed here -->
+</div>
+
+<script>
+function showInfo(type) {
+  let infoDisplay = document.getElementById('infoDisplay');
+  let info;
+
+  switch(type) {
+    case 'appName':
+      info = navigator.appName;
+      break;
+    case 'product':
+      info = navigator.product;
+      break;
+    case 'appVersion':
+      info = navigator.appVersion;
+      break;
+    case 'userAgent':
+      info = navigator.userAgent;
+      break;
+    case 'platform':
+      info = navigator.platform;
+      break;
+    case 'language':
+      info = navigator.language;
+      break;
+    case 'innerHeight':
+      info = window.innerHeight;
+      break;
+    case 'innerWidth':
+      info = window.innerWidth;
+      break;
+    case 'width':
+      info = screen.width;
+      break;
+    case 'height':
+      info = screen.height;
+      break;
+    case 'availWidth':
+      info = screen.availWidth;
+      break;
+    case 'availHeight':
+      info = screen.availHeight;
+      break;
+    case 'colorDepth':
+      info = screen.colorDepth;
+      break;
+    case 'pixelDepth':
+      info = screen.pixelDepth;
+      break;
+    case 'href':
+      info = location.href;
+      break;
+    case 'hostname':
+      info = location.hostname;
+      break;
+    case 'pathname':
+      info = location.pathname;
+      break;
+    case 'protocol':
+      info = location.protocol;
+      break;
+  }
+
+  infoDisplay.textContent = type + ': ' + info;
+}
+
+const x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+</script>
+
+</body>
+</html>
